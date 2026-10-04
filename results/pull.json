@@ -1,0 +1,16 @@
+{
+  "pulled": "2026-10-04",
+  "rows": 426880,
+  "files": {
+    "dataset_43306.pq": {
+      "url": "https://data.openml.org/datasets/0004/43306/dataset_43306.pq",
+      "bytes": 455975540,
+      "sha256": "4720dd98b2caa6f3d746d36642f182223e244554842d1da2ad4756e30227f5f6"
+    },
+    "cars_slim.csv.gz": {
+      "url": "derived from dataset_43306.pq: columns id,region,price,year,manufacturer,model,condition,cylinders,fuel,odometer,title_status,transmission,VIN,drive,size,type,paint_color,state,lat,long,posting_date",
+      "bytes": 16956507,
+      "sha256": "7990a350aa9d14c21a64d135e2d04570765aba3a0d881489714951378e41cb93"
+    }
+  }
+}
