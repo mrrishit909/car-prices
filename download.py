@@ -9,6 +9,7 @@ own terms of use restrict scraping, so nothing here is committed except small ag
 posting_date column says 2021-04-04 to 2021-05-04; the analysis uses the dates in the data. Cite: Reese, A. (2021), Craigslist Cars & Trucks data, via OpenML #43306.
 The slim file drops url, image_url, description, region_url and county (free text, links, empty); it keeps VIN (a vehicle number, used only to find re-listings).
 """
+import gzip
 import hashlib
 import json
 import ssl
@@ -45,16 +46,19 @@ def main():
             try:
                 req = urllib.request.Request(URL, headers={"User-Agent": "research-portfolio (Rishit Raj Mathur)"})
                 with urllib.request.urlopen(req, context=CTX, timeout=120) as r, open(RAW, "wb") as out:
+                    want = int(r.headers["Content-Length"])
                     while chunk := r.read(1 << 20):
                         out.write(chunk)
+                if RAW.stat().st_size != want:
+                    raise OSError(f"short read: {RAW.stat().st_size} of {want} bytes")
                 break
             except OSError:
+                RAW.unlink(missing_ok=True)
                 if attempt == 3:
                     raise
                 time.sleep(5)
     t = pq.read_table(RAW, columns=COLS)
-    import gzip
-    with gzip.open(SLIM, "wb") as f:
+    with open(SLIM, "wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as f:      # mtime=0: the same bytes (and sha256) on every run
         pacsv.write_csv(t, f)
     info = {"pulled": date.today().isoformat(), "rows": t.num_rows,
             "files": {"dataset_43306.pq": {"url": URL, "bytes": RAW.stat().st_size, "sha256": sha(RAW)},

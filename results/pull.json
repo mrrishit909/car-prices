@@ -9,8 +9,8 @@
     },
     "cars_slim.csv.gz": {
       "url": "derived from dataset_43306.pq: columns id,region,price,year,manufacturer,model,condition,cylinders,fuel,odometer,title_status,transmission,VIN,drive,size,type,paint_color,state,lat,long,posting_date",
-      "bytes": 16956507,
-      "sha256": "7990a350aa9d14c21a64d135e2d04570765aba3a0d881489714951378e41cb93"
+      "bytes": 16956493,
+      "sha256": "a1b1ac6310500151d0dfc0517b2a8eafd2791694459de0222a91540b0302ed72"
     }
   }
 }

@@ -1,0 +1,13 @@
+step,dropped,left
+raw listings,0,426880
+price is 0,32895,393985
+price 1 to 499,9199,384786
+"price above 150,000",196,384590
+"placeholder price (1234, 12345, 11111...)",165,384425
+model year missing or before 1995,16343,368082
+odometer missing,2032,366050
+"odometer above 400,000",1050,365000
+odometer under 100 on a 2019 or older car,2514,362486
+make or model missing,14355,348131
+"title not clean (salvage, rebuilt, lien, missing...)",17662,330469
+re-listings of a car already counted,141531,188938
